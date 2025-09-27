@@ -13,7 +13,7 @@ use Test\TestHarness;
 
 class OrdersPatchTest extends TestCase
 {
-    private function buildRequestBody()
+    private function buildRequestBody(): array
     {
         return [
             [
@@ -32,7 +32,7 @@ class OrdersPatchTest extends TestCase
         ];
     }
 
-    public function testOrdersPatchRequest()
+    public function testOrdersPatchRequest(): void
     {
         $client = TestHarness::client();
         $createdOrder = OrdersCreateTest::create($client);

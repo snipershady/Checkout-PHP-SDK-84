@@ -13,7 +13,7 @@ use Test\TestHarness;
 class OrdersCaptureTest extends TestCase
 {
 
-    public function testOrdersCaptureRequest()
+    public function testOrdersCaptureRequest(): void
     {
         $this->markTestSkipped("Need an approved Order ID to execute this test.");
         $request = new OrdersCaptureRequest('ORDER-ID');

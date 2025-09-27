@@ -13,7 +13,7 @@ class AuthorizeOrder
      * Setting up request body for Authorize. This can be populated with fields as per need. Refer API docs for more details.
      * 
      */
-    public static function buildRequestBody()
+    public static function buildRequestBody(): string
     {
         return "{}";
     }

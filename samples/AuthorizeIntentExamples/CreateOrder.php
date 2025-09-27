@@ -14,12 +14,12 @@ class CreateOrder
      * request body should be set as "AUTHORIZE" for authorize intent flow.
      * 
      */
-    private static function buildRequestBody()
+    private static function buildRequestBody(): array
     {
-        return array(
+        return [
             'intent' => 'AUTHORIZE',
             'application_context' =>
-                array(
+                [
                     'return_url' => 'https://example.com/return',
                     'cancel_url' => 'https://example.com/cancel',
                     'brand_name' => 'EXAMPLE INC',
@@ -27,107 +27,107 @@ class CreateOrder
                     'landing_page' => 'BILLING',
                     'shipping_preference' => 'SET_PROVIDED_ADDRESS',
                     'user_action' => 'PAY_NOW',
-                ),
+                ],
             'purchase_units' =>
-                array(
+                [
                     0 =>
-                        array(
+                        [
                             'reference_id' => 'PUHF',
                             'description' => 'Sporting Goods',
                             'custom_id' => 'CUST-HighFashions',
                             'soft_descriptor' => 'HighFashions',
                             'amount' =>
-                                array(
+                                [
                                     'currency_code' => 'USD',
                                     'value' => '220.00',
                                     'breakdown' =>
-                                        array(
+                                        [
                                             'item_total' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '180.00',
-                                                ),
+                                                ],
                                             'shipping' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '20.00',
-                                                ),
+                                                ],
                                             'handling' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '10.00',
-                                                ),
+                                                ],
                                             'tax_total' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '20.00',
-                                                ),
+                                                ],
                                             'shipping_discount' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '10.00',
-                                                ),
-                                        ),
-                                ),
+                                                ],
+                                        ],
+                                ],
                             'items' =>
-                                array(
+                                [
                                     0 =>
-                                        array(
+                                        [
                                             'name' => 'T-Shirt',
                                             'description' => 'Green XL',
                                             'sku' => 'sku01',
                                             'unit_amount' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '90.00',
-                                                ),
+                                                ],
                                             'tax' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '10.00',
-                                                ),
+                                                ],
                                             'quantity' => '1',
                                             'category' => 'PHYSICAL_GOODS',
-                                        ),
+                                        ],
                                     1 =>
-                                        array(
+                                        [
                                             'name' => 'Shoes',
                                             'description' => 'Running, Size 10.5',
                                             'sku' => 'sku02',
                                             'unit_amount' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '45.00',
-                                                ),
+                                                ],
                                             'tax' =>
-                                                array(
+                                                [
                                                     'currency_code' => 'USD',
                                                     'value' => '5.00',
-                                                ),
+                                                ],
                                             'quantity' => '2',
                                             'category' => 'PHYSICAL_GOODS',
-                                        ),
-                                ),
+                                        ],
+                                ],
                             'shipping' =>
-                                array(
+                                [
                                     'method' => 'United States Postal Service',
                                     'name' =>
-                                        array(
+                                        [
                                             'full_name' => 'John Doe',
-                                        ),
+                                        ],
                                     'address' =>
-                                        array(
+                                        [
                                             'address_line_1' => '123 Townsend St',
                                             'address_line_2' => 'Floor 6',
                                             'admin_area_2' => 'San Francisco',
                                             'admin_area_1' => 'CA',
                                             'postal_code' => '94107',
                                             'country_code' => 'US',
-                                        ),
-                                ),
-                        ),
-                ),
-        );
+                                        ],
+                                ],
+                        ],
+                ],
+        ];
     }
 
     /**
@@ -135,27 +135,27 @@ class CreateOrder
      * request body should be set as "AUTHORIZE" for authorize intent flow.
      * 
      */
-    private static function buildMinimumRequestBody()
+    private static function buildMinimumRequestBody(): array
     {
-        return array(
+        return [
             'intent' => 'AUTHORIZE',
             'application_context' =>
-                array(
+                [
                     'return_url' => 'https://example.com/return',
                     'cancel_url' => 'https://example.com/cancel'
-                ),
+                ],
             'purchase_units' =>
-                array(
+                [
                     0 =>
-                        array(
+                        [
                             'amount' =>
-                                array(
+                                [
                                     'currency_code' => 'USD',
                                     'value' => '220.00'
-                                )
-                        )
-                )
-        );
+                                ]
+                        ]
+                ]
+        ];
     }
 
     /**

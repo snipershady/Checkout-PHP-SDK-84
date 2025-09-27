@@ -12,15 +12,15 @@ class RefundOrder
     /**
      * Function to create an refund capture request. Payload can be updated to issue partial refund.
      */
-    public static function buildRequestBody()
+    public static function buildRequestBody(): array
     {
-        return array(
+        return [
             'amount' =>
-                array(
+                [
                     'value' => '20.00',
                     'currency_code' => 'USD'
-                )
-        );
+                ]
+        ];
     }
 
     /**

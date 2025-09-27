@@ -14,7 +14,8 @@ if ($order->statusCode == 201)
 {
     $orderId = $order->result->id;
     print "Links:\n";
-    for ($i = 0; $i < count($order->result->links); ++$i)
+    $counter = count($order->result->links);
+    for ($i = 0; $i < $counter; ++$i)
     {
         $link = $order->result->links[$i];
         print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
@@ -39,7 +40,8 @@ if ($response->statusCode == 201)
     print "Status: {$response->result->status}\n";
     print "Order ID: {$response->result->id}\n";
     print "Links:\n";
-    for ($i = 0; $i < count($response->result->links); ++$i){
+    $counter = count($response->result->links);
+    for ($i = 0; $i < $counter; ++$i){
         $link = $response->result->links[$i];
         print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
     }
@@ -64,7 +66,8 @@ if ($response->statusCode == 201)
     print "Status: {$response->result->status}\n";
     print "Refund ID: {$response->result->id}\n";
     print "Links:\n";
-    for ($i = 0; $i < count($response->result->links); ++$i){
+    $counter = count($response->result->links);
+    for ($i = 0; $i < $counter; ++$i){
         $link = $response->result->links[$i];
         print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
     }

@@ -11,11 +11,11 @@ ini_set('display_startup_errors', '1');
 
 class TestHarness
 {
-    public static function client()
+    public static function client(): \PayPalCheckoutSdk\Core\PayPalHttpClient
     {
         return new PayPalHttpClient(self::environment());
     }
-    public static function environment()
+    public static function environment(): \PayPalCheckoutSdk\Core\SandboxEnvironment
     {
         $clientId = getenv("CLIENT_ID") ?: "<<PAYPAL-CLIENT-ID>>";
         $clientSecret = getenv("CLIENT_SECRET") ?: "<<PAYPAL-CLIENT-SECRET>>";

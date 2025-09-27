@@ -13,7 +13,7 @@ class CaptureOrder
      * This request can be updated with required fields as per need.
      * Please refer API specs for more info.
      */
-    public static function buildRequestBody()
+    public static function buildRequestBody(): string
     {
         return "{}";
     }

@@ -10,42 +10,42 @@ use Sample\AuthorizeIntentExamples\CreateOrder;
 
 class PatchOrder
 {
-    private static function buildRequestBody()
+    private static function buildRequestBody(): array
     {
-        return array (
+        return  [
             0 =>
-                array (
+                 [
                     'op' => 'replace',
                     'path' => '/intent',
                     'value' => 'CAPTURE',
-                ),
+                ],
             1 =>
-                array (
+                 [
                     'op' => 'replace',
                     'path' => '/purchase_units/@reference_id==\'PUHF\'/amount',
                     'value' =>
-                        array (
+                         [
                             'currency_code' => 'USD',
                             'value' => '200.00',
                             'breakdown' =>
-                                array (
+                                 [
                                     'item_total' =>
-                                        array (
+                                         [
                                             'currency_code' => 'USD',
                                             'value' => '180.00',
-                                        ),
+                                        ],
                                     'tax_total' =>
-                                        array (
+                                         [
                                             'currency_code' => 'USD',
                                             'value' => '20.00',
-                                        ),
-                                ),
-                        ),
-                ),
-        );
+                                        ],
+                                ],
+                        ],
+                ],
+        ];
     }
 
-    public static function patchOrder($orderId)
+    public static function patchOrder($orderId): void
     {
 
         $client = PayPalClient::client();

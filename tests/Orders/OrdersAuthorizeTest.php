@@ -12,7 +12,7 @@ use Test\TestHarness;
 
 class OrdersAuthorizeTest extends TestCase
 {
-    public function testOrdersAuthorizeRequest()
+    public function testOrdersAuthorizeRequest(): void
     {
         $this->markTestSkipped("Need an approved Order ID to execute this test.");
         $request = new OrdersAuthorizeRequest('ORDER-ID');

@@ -13,7 +13,7 @@ use Test\TestHarness;
 class OrdersGetTest extends TestCase
 {
 
-    public function testOrdersGetRequest()
+    public function testOrdersGetRequest(): void
     {
         $client = TestHarness::client();
         $createdOrder = OrdersCreateTest::create($client);

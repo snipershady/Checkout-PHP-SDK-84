@@ -14,7 +14,7 @@ class GetOrder
     /**
      * This function can be used to retrieve an order by passing order Id as argument.
      */
-    public static function getOrder($orderId)
+    public static function getOrder($orderId): void
     {
         
         $client = PayPalClient::client();

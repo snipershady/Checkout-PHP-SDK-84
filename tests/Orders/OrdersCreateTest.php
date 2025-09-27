@@ -12,7 +12,7 @@ use Test\TestHarness;
 
 class OrdersCreateTest extends TestCase
 {
-    private static function buildRequestBody()
+    private static function buildRequestBody(): array
     {
         return [
             "intent" => "CAPTURE",
@@ -37,7 +37,7 @@ class OrdersCreateTest extends TestCase
         return $client->execute($request);
     }
 
-    public function testOrdersCreateRequest()
+    public function testOrdersCreateRequest(): void
     {
         $client = TestHarness::client();
         $response = self::create($client);

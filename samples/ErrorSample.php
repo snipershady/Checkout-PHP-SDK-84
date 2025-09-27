@@ -8,12 +8,12 @@ use PayPalHttp\HttpException;
 
 class ErrorSample
 {
-    public static function prettyPrint($jsonData, $pre="")
+    public static function prettyPrint($jsonData, string $pre=""): string
     {
         $pretty = "";
         foreach ($jsonData as $key => $val)
         {
-            $pretty .= $pre . ucfirst($key) .": ";
+            $pretty .= $pre . ucfirst((string) $key) .": ";
             if (strcmp(gettype($val), "array") == 0){
                 $pretty .= "\n";
                 $sno = 1;
@@ -33,7 +33,7 @@ class ErrorSample
     /**
      * Body has no required parameters (intent, purchase_units)
      */
-    public static function createError1()
+    public static function createError1(): void
     {
         $request = new OrdersCreateRequest();
         $request->body = "{}";
@@ -54,23 +54,23 @@ class ErrorSample
     /**
      * Body has invalid parameter value for intent
      */
-    public static function createError2()
+    public static function createError2(): void
     {
         $request = new OrdersCreateRequest();
-        $request->body = array (
+        $request->body =  [
             'intent' => 'INVALID',
             'purchase_units' =>
-                array (
+                 [
                     0 =>
-                        array (
+                         [
                             'amount' =>
-                                array (
+                                 [
                                     'currency_code' => 'USD',
                                     'value' => '100.00',
-                                ),
-                        ),
-                ),
-        );
+                                ],
+                        ],
+                ],
+        ];
         print "Request Body:\n" . json_encode($request->body, JSON_PRETTY_PRINT) . "\n\n";
 
         try{
