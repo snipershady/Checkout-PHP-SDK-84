@@ -1,4 +1,5 @@
 <?php
+
 namespace PayPalCheckoutSdk\Core;
 
 /**
@@ -7,16 +8,15 @@ namespace PayPalCheckoutSdk\Core;
  *
  * @package PayPal\Core
  */
-class UserAgent
-{
+class UserAgent {
+
     /**
      * Returns the value of the User-Agent header
      * Add environment values and php version numbers
      *
      * @return string
      */
-    public static function getValue(): string
-    {
+    public static function getValue(): string {
         $featureList = [
             'platform-ver=' . PHP_VERSION,
             'bit=' . self::_getPHPBit(),
@@ -33,13 +33,13 @@ class UserAgent
         }
         return sprintf("PayPalSDK/%s %s (%s)", "Checkout-PHP-SDK", Version::VERSION, implode('; ', $featureList));
     }
+
     /**
      * Gets PHP Bit version
      *
      * @return int|string
      */
-    private static function _getPHPBit(): string
-    {
+    private static function _getPHPBit(): string {
         return match (PHP_INT_SIZE) {
             4 => '32',
             8 => '64',

@@ -11,27 +11,24 @@ namespace PayPalCheckoutSdk\Orders;
 
 use PayPalHttp\HttpRequest;
 
-class OrdersCaptureRequest extends HttpRequest
-{
-    function __construct($orderId)
-    {
+class OrdersCaptureRequest extends HttpRequest {
+
+    function __construct($orderId) {
         parent::__construct("/v2/checkout/orders/{order_id}/capture?", "POST");
 
         $this->path = str_replace("{order_id}", urlencode((string) $orderId), $this->path);
         $this->headers["Content-Type"] = "application/json";
     }
 
-
-    public function payPalClientMetadataId($payPalClientMetadataId): void
-    {
+    public function payPalClientMetadataId($payPalClientMetadataId): void {
         $this->headers["PayPal-Client-Metadata-Id"] = $payPalClientMetadataId;
     }
-    public function payPalRequestId($payPalRequestId): void
-    {
+
+    public function payPalRequestId($payPalRequestId): void {
         $this->headers["PayPal-Request-Id"] = $payPalRequestId;
     }
-    public function prefer($prefer): void
-    {
+
+    public function prefer($prefer): void {
         $this->headers["Prefer"] = $prefer;
     }
 }

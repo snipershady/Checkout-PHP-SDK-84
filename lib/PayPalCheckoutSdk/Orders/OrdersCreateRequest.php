@@ -11,21 +11,18 @@ namespace PayPalCheckoutSdk\Orders;
 
 use PayPalHttp\HttpRequest;
 
-class OrdersCreateRequest extends HttpRequest
-{
-    function __construct()
-    {
+class OrdersCreateRequest extends HttpRequest {
+
+    public function __construct() {
         parent::__construct("/v2/checkout/orders?", "POST");
         $this->headers["Content-Type"] = "application/json";
     }
 
-
-    public function payPalPartnerAttributionId($payPalPartnerAttributionId): void
-    {
+    public function payPalPartnerAttributionId($payPalPartnerAttributionId): void {
         $this->headers["PayPal-Partner-Attribution-Id"] = $payPalPartnerAttributionId;
     }
-    public function prefer($prefer): void
-    {
+
+    public function prefer($prefer): void {
         $this->headers["Prefer"] = $prefer;
     }
 }
