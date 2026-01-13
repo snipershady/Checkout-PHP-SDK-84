@@ -1,0 +1,6 @@
+tests/ export-ignore
+.idea/ export-ignore
+.github/ export-ignore
+.php-cs-fixer.dist.php export-ignore
+.php-cs-fixer.cache export-ignore
+rector.php export-ignore
