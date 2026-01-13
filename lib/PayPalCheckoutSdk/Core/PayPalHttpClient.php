@@ -5,14 +5,15 @@ namespace PayPalCheckoutSdk\Core;
 use Override;
 use PayPalHttp\HttpClient;
 
-class PayPalHttpClient extends HttpClient {
-
+class PayPalHttpClient extends HttpClient
+{
     /**
      * @var AuthorizationInjector
      */
     public $authInjector;
 
-    public function __construct(PayPalEnvironment $environment, private $refreshToken = NULL) {
+    public function __construct(PayPalEnvironment $environment, private $refreshToken = null)
+    {
         parent::__construct($environment);
         $this->authInjector = new AuthorizationInjector($this, $environment, $this->refreshToken);
         $this->addInjector($this->authInjector);
@@ -21,7 +22,8 @@ class PayPalHttpClient extends HttpClient {
     }
 
     #[Override]
-    public function userAgent() {
+    public function userAgent()
+    {
         return UserAgent::getValue();
     }
 }

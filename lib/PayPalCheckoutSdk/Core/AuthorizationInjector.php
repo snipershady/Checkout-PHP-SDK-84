@@ -6,18 +6,21 @@ use Override;
 use PayPalHttp\HttpClient;
 use PayPalHttp\HttpRequest;
 use PayPalHttp\Injector;
+
 use function array_key_exists;
 
-class AuthorizationInjector implements Injector {
-
+class AuthorizationInjector implements Injector
+{
     public $accessToken;
 
-    public function __construct(private readonly HttpClient $client, private readonly PayPalEnvironment $environment, private $refreshToken) {
-        
+    public function __construct(private readonly HttpClient $client, private readonly PayPalEnvironment $environment, private $refreshToken)
+    {
+
     }
 
     #[Override]
-    public function inject($request): void {
+    public function inject($request): void
+    {
         if (!$this->hasAuthHeader($request) && !$this->isAuthRequest($request)) {
             if (empty($this->accessToken) || $this->accessToken->isExpired()) {
                 $this->accessToken = $this->fetchAccessToken();
@@ -26,17 +29,20 @@ class AuthorizationInjector implements Injector {
         }
     }
 
-    private function fetchAccessToken(): AccessToken {
+    private function fetchAccessToken(): AccessToken
+    {
         $accessTokenResponse = $this->client->execute(new AccessTokenRequest($this->environment, $this->refreshToken));
         $accessToken = $accessTokenResponse->result;
         return new AccessToken($accessToken->access_token, $accessToken->token_type, $accessToken->expires_in);
     }
 
-    private function isAuthRequest($request): bool {
+    private function isAuthRequest($request): bool
+    {
         return $request instanceof AccessTokenRequest || $request instanceof RefreshTokenRequest;
     }
 
-    private function hasAuthHeader(HttpRequest $request): bool {
+    private function hasAuthHeader(HttpRequest $request): bool
+    {
         return array_key_exists("Authorization", $request->headers);
     }
 }

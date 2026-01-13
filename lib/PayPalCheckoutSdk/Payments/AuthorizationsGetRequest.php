@@ -11,9 +11,10 @@ namespace PayPalCheckoutSdk\Payments;
 
 use PayPalHttp\HttpRequest;
 
-class AuthorizationsGetRequest extends HttpRequest {
-
-    function __construct($authorizationId) {
+class AuthorizationsGetRequest extends HttpRequest
+{
+    public function __construct($authorizationId)
+    {
         parent::__construct("/v2/payments/authorizations/{authorization_id}?", "GET");
 
         $this->path = str_replace("{authorization_id}", urlencode((string) $authorizationId), $this->path);

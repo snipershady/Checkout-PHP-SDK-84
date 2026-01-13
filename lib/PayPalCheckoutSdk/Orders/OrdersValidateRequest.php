@@ -11,16 +11,18 @@ namespace PayPalCheckoutSdk\Orders;
 
 use PayPalHttp\HttpRequest;
 
-class OrdersValidateRequest extends HttpRequest {
-
-    function __construct($orderId) {
+class OrdersValidateRequest extends HttpRequest
+{
+    public function __construct($orderId)
+    {
         parent::__construct("/v2/checkout/orders/{order_id}/validate-payment-method?", "POST");
 
         $this->path = str_replace("{order_id}", urlencode((string) $orderId), $this->path);
         $this->headers["Content-Type"] = "application/json";
     }
 
-    public function payPalClientMetadataId($payPalClientMetadataId): void {
+    public function payPalClientMetadataId($payPalClientMetadataId): void
+    {
         $this->headers["PayPal-Client-Metadata-Id"] = $payPalClientMetadataId;
     }
 }

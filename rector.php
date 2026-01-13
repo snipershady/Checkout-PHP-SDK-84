@@ -2,25 +2,22 @@
 
 declare(strict_types=1);
 
-use Rector\CodeQuality\Rector\Foreach_\UnusedForeachValueToArrayKeysRector;
-use Rector\CodeQuality\Rector\FunctionLike\SimplifyUselessVariableRector;
 use Rector\Config\RectorConfig;
-use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
-use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
-use Rector\DeadCode\Rector\Foreach_\RemoveUnusedForeachKeyRector;
+use Rector\DeadCode\Rector\ClassMethod\RemoveParentDelegatingConstructorRector;
 use Rector\Php84\Rector\MethodCall\NewMethodCallWithoutParenthesesRector;
 use Rector\Set\ValueObject\LevelSetList;
-use Rector\Symfony\CodeQuality\Rector\Class_\InlineClassRoutePrefixRector;
 use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
                 ->withPaths([
-                    __DIR__ . '/src',
+                    __DIR__ . '/lib',
                     __DIR__ . '/tests'
                 ])
                 ->withSkip([
+                    __DIR__ . '/vendor',
                     //InlineClassRoutePrefixRector::class,
                     NewMethodCallWithoutParenthesesRector::class,
+                    RemoveParentDelegatingConstructorRector::class
                         //UnusedForeachValueToArrayKeysRector::class,
                         //RemoveUnusedForeachKeyRector::class,
                         //RemoveUselessParamTagRector::class,
@@ -36,13 +33,13 @@ return RectorConfig::configure()
                 //typeDeclarations: true,
                 //rectorPreset: true
                 )
-                ->withPhpSets(php84: true)
-                ->withPhpVersion(PhpVersion::PHP_84)
+                ->withPhpSets(php85: true)
+                ->withPhpVersion(PhpVersion::PHP_85)
                 ->withAttributesSets(symfony: true, doctrine: true)
                 ->withComposerBased(twig: true, doctrine: true, phpunit: true, symfony: true)
                 ->withSets(
                         [
-                            LevelSetList::UP_TO_PHP_84
+                            LevelSetList::UP_TO_PHP_85
                         ]
                 )
                 ->withRules(
@@ -52,8 +49,8 @@ return RectorConfig::configure()
                         //ReturnTypeFromStrictNativeCallRector::class
                         ]
                 )
-                ->withTypeCoverageLevel(10)
-                ->withDeadCodeLevel(10)
-                ->withCodeQualityLevel(10)
-                //->withCodingStyleLevel(24) // use php-csfix instead
+                ->withTypeCoverageLevel(50)
+                ->withDeadCodeLevel(50)
+                ->withCodeQualityLevel(50)
+//->withCodingStyleLevel(24) // use php-csfix instead
 ;

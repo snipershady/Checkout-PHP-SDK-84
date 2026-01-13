@@ -11,9 +11,10 @@ namespace PayPalCheckoutSdk\Payments;
 
 use PayPalHttp\HttpRequest;
 
-class CapturesGetRequest extends HttpRequest {
-
-    function __construct($captureId) {
+class CapturesGetRequest extends HttpRequest
+{
+    public function __construct($captureId)
+    {
         parent::__construct("/v2/payments/captures/{capture_id}?", "GET");
 
         $this->path = str_replace("{capture_id}", urlencode((string) $captureId), $this->path);

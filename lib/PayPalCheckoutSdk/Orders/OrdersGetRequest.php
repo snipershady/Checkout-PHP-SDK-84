@@ -11,9 +11,10 @@ namespace PayPalCheckoutSdk\Orders;
 
 use PayPalHttp\HttpRequest;
 
-class OrdersGetRequest extends HttpRequest {
-
-    public function __construct($orderId) {
+class OrdersGetRequest extends HttpRequest
+{
+    public function __construct($orderId)
+    {
         parent::__construct("/v2/checkout/orders/{order_id}?", "GET");
 
         $this->path = str_replace("{order_id}", urlencode((string) $orderId), $this->path);

@@ -5,10 +5,11 @@ namespace PayPalCheckoutSdk\Core;
 use Override;
 use PayPalHttp\Injector;
 
-class FPTIInstrumentationInjector implements Injector {
-
+class FPTIInstrumentationInjector implements Injector
+{
     #[Override]
-    public function inject($request): void {
+    public function inject($request): void
+    {
         $request->headers["sdk_name"] = "Checkout SDK";
         $request->headers["sdk_version"] = "1.0.2";
         $request->headers["sdk_tech_stack"] = "PHP " . PHP_VERSION;
